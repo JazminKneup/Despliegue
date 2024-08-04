@@ -13,7 +13,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: 'http://localhost:5173', 
+    origin: 'https://frontend-chi-gilt.vercel.app/', 
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type'],
     credentials: true
@@ -26,7 +26,7 @@ const io = new Server(server, {
 connectDB();
 
 app.use(cors({
-  origin: 'http://localhost:5173', 
+  origin: 'https://frontend-chi-gilt.vercel.app/', 
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type'],
   credentials: true
@@ -38,7 +38,7 @@ app.use(cookieParser());
 
 // Middleware de verificación de CORS
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:5173');
+  res.header('Access-Control-Allow-Origin', 'https://frontend-chi-gilt.vercel.app/');
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   res.header('Access-Control-Allow-Credentials', 'true');

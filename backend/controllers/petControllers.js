@@ -65,7 +65,10 @@ module.exports.updatePet = async (req, res) => {
 
 module.exports.deletePet = async (req, res) => {
   try {
-    await Pet.findByIdAndDelete(req.params._id);
+    const pet = await Pet.findByIdAndDelete(req.params._id);
+    if (io) {
+      io.emit('pet_deleted', req.params._id);
+    }
     res.json({ message: 'Pet deleted' });
   } catch (err) {
     console.error('Error deleting pet:', err);
